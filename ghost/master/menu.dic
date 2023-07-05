@@ -141,6 +141,8 @@ TalkConfig
 	--
 	"\f[bold,1]Times petted:\f[bold,0] %(pets)\n\n"
 	--
+	"\f[bold,1]Last seen:\s[bold,0] %(lastSeen)\n\n"
+	--
 	"\f[bold,1]Talk Rate:\f[bold,0] - every %(talktime) \f[sup,1](\q[Change it,talkinter])\f[sup,0]\n\n"
 	--		
 	"\![*]\q[Back to the menu,BACKTOMENU]\e"
@@ -273,7 +275,7 @@ birthchecked
 		}
 	elseif userbirthday == "4month 15day"
 		{
-			"\0\s[0]%(cf)You were born on April 15th. \w8\s[1]Hey, that's my birthday too! Maybe we can celebrate together!\w3\s[3]\w8\w6\s[7]\w8\w8\s[0]\e"
+			"\0\s[0]%(cf)You were born on April 15th. \w8\s[1]Hey, that's my birthday too! Maybe we can celebrate together!\w3\s[3]\e"
 		}
 	else //if the birthday is not listed above.
 		{
@@ -301,7 +303,7 @@ Select.talkinter
 //If the user doesn't want to change the rate. You can change all of the dialogue in any of these options if you want to reflect the choice the user made. You TECHNICALLY could also change the value in talktime to reflect some other way of measuring time but I wouldn't recommend it, it'd just be confusing I'm sure.
 Select.TalksTill
 	{
-		"\0\s[0]I'll keep talking every %(talktime).\e"
+		"\0\s[0]%(cf)I'll keep talking every %(talktime).\e"
 	}
 
 //If the user chooses every 30 seconds.
@@ -310,7 +312,7 @@ Select.TALKMAX
  		talktime = "every 30 seconds" //this sets up the envelope properly
 		aitalkinterval = 30 //this changes the actual rate
 		
- 		"\0\s[0]I will say something every 30 seconds. Whatever comes to mind!\e"
+ 		"\0\s[0]%(cf)I will say something every 30 seconds. Whatever comes to mind!\e"
 	}
 
 //If the user chooses every minute.
@@ -319,7 +321,7 @@ Select.TALKHIGH
  		talktime = "every minute"
 		aitalkinterval = 60
 		
- 		"\0\s[0]I will say something every minute.\e"
+ 		"\0\s[0]%(cf)I will say something every minute.\e"
 	}
 
 //If the user chooses every three minutes.
@@ -328,7 +330,7 @@ Select.TALKNORMAL
  		talktime = "3 minutes"
 		aitalkinterval = 180
 		
- 		"\0\s[0]I will say something every three minutes.\e"
+ 		"\0\s[0]%(cf)I will say something every three minutes.\e"
 	}
 
 //If the user chooses every five minutes. This is the default rate the ghost will start up in, as seen in bootend.dic.
@@ -337,7 +339,7 @@ Select.TALKPOOR
  		talktime = "5 minutes"
 		aitalkinterval = 300
 		
- 		"\0\s[0]I will say something every five minutes.\e"
+ 		"\0\s[0]%(cf)I will say something every five minutes.\e"
 	}
 
 Select.TALKWORSE
@@ -345,7 +347,7 @@ Select.TALKWORSE
 	talktime = "10 minutes"
 	aitalkinterval = 600
 
-	"\0\s[0]I'll say something every ten minutes.\e"
+	"\0\s[0]%(cf)I'll say something every ten minutes.\e"
 }
 
 //If the user chooses to not have them speak. This is one case where you MIGHT want to make talktime equal something else, if you have a snappier way of saying the ghost won't talk. Make sure it flows well in your menus though, since it will be displayed in your config menu.
@@ -354,7 +356,7 @@ Select.TALKNONE
  		talktime = "Not talking!"
 		aitalkinterval = 0
 		
-		"\0\s[0]I won't say anything.\e"
+		"\0\s[0]%(cf)I won't say anything.\e"
 	}
 
 	
@@ -368,9 +370,9 @@ Select.TEACHNAME
 //If the user selects cancel in a menu. Replace as you like, or just leave them blank.
 Select.CANCEL
 	{
-		"\0\s[0]Alrighty.\e"
+		"\0\s[0]%(cf)Alrighty.\e"
 		
-		"\0\s[0]Okie dokie.\e"
+		"\0\s[0]%(cf)Okie dokie.\e"
  	}
 
 	
@@ -404,7 +406,7 @@ Select.CALENDAR
 //When the user chooses SSP preferences. This will open the same window that shows up if you right click your ghost and go to Utilities - Preferences.
 Select.sspconfig
 {
-	"\0\s[0]I'll pull that up for you.\w8\![open,configurationdialog]\e"
+	"\0\s[0]I'll pull that up for you.\w8\![open,configurationdialog] \s[11]What are you going to change?\e"
 	
 	//Again, you can replace up to the \! tag.
 }
